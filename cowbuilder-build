@@ -1,0 +1,6 @@
+#!/bin/sh
+
+DIST=$1
+DSC=$2
+
+sudo cowbuilder --configfile ~/.pbuilderrc-$DIST --build $(basename "$DSC")
