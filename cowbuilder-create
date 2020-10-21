@@ -1,15 +1,26 @@
 #!/bin/bash
 
 DIST=$1
+BASEPATH="/var/cache/pbuilder/base-${DIST}.cow"
+PBUILDERC="${HOME}/.pbuilderrc-${DIST}"
 
-if [ -e "/var/cache/pbuilder/base-${DIST}.cow" ] ; then
-	echo "File exists: /var/cache/pbuilder/base-${DIST}.cow"
+if [ "unstable" = "${DIST}" ] ; then
+    BASEPATH="/var/cache/pbuilder/base.cow"
+    PBUILDERC="${HOME}/.pbuilderrc"
+fi
+
+if [ -e "${BASEPATH}" ] ; then
+	echo "File exists: ${BASEPATH}"
 	exit
 fi
 
-sudo cowbuilder --create --distribution ${DIST} --basepath /var/cache/pbuilder/base-${DIST}.cow
+sudo cowbuilder --create --distribution ${DIST} --basepath ${BASEPATH}
 
-cat <<EOF > ~/.pbuilderrc-${DIST}
-BASEPATH=/var/cache/pbuilder/base-${DIST}.cow
+cat <<EOF > ${PBUILDERC}
+BASEPATH=${BASEPATH}
 DISTRIBUTION=${DIST}
+MIRRORSITE=http://ftp.jp.debian.org/debian/
+AUTO_DEBSIGN=yes
+PDEBUILD_PBUILDER=cowbuilder
+DEBBUILDOPTS="-j16"
 EOF
