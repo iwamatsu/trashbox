@@ -1,0 +1,6 @@
+#!/bin/sh
+
+port=4 # Vis5
+
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+. ${SCRIPT_DIR}/pdu-ctrl-base

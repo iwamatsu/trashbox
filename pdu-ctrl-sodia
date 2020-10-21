@@ -1,0 +1,6 @@
+#!/bin/sh
+
+port=7 # sodia
+
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+. ${SCRIPT_DIR}/pdu-ctrl-base

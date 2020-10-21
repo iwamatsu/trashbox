@@ -1,0 +1,6 @@
+#!/bin/sh
+
+port=3 # BBB
+
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+. ${SCRIPT_DIR}/pdu-ctrl-base

@@ -1,0 +1,7 @@
+pdu=192.168.0.14
+daemon=192.168.0.11
+daemon_port=16421
+command=$1
+
+pduclient --daemon ${daemon} --hostname ${pdu} --port ${port} --command ${command}
+# curl "http://${daemon}:${daemon_port}/power/control/${commands}?hostname=${pdu}&port=${port}"
