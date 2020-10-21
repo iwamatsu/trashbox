@@ -1,0 +1,15 @@
+#!/bin/bash
+
+DIST=$1
+
+if [ -e "/var/cache/pbuilder/base-${DIST}.cow" ] ; then
+	echo "File exists: /var/cache/pbuilder/base-${DIST}.cow"
+	exit
+fi
+
+sudo cowbuilder --create --distribution ${DIST} --basepath /var/cache/pbuilder/base-${DIST}.cow
+
+cat <<EOF > ~/.pbuilderrc-${DIST}
+BASEPATH=/var/cache/pbuilder/base-${DIST}.cow
+DISTRIBUTION=${DIST}
+EOF
