@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# make DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/xilinx/xlnx,csi2rxss.yaml dt_binding_check 
+
+make DT_SCHEMA_FILES=$1 dt_binding_check 
