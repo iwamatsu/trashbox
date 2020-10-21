@@ -1,3 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 
-sudo sysctl -w kernel.dmesg_restrict=0
+sudo sh -c "echo kernel.dmesg_restrict=0 > /etc/sysctl.d/dmesg.conf"
+sudo /sbin/sysctl --system
